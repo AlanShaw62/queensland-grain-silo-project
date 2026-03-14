@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+<ul class="silo-list">
+  {{ range .Sections.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{ end }}
+</ul>
+
+<style>
+.silo-list {
+  list-style: none;
+  padding-left: 0;
+}
+.silo-list li {
+  margin: 0.3rem 0;
+}
+</style>
+
+{{ end }}

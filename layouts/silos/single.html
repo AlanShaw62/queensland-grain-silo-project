@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<article class="silo-page">
+
+  <h1>{{ .Title }}</h1>
+
+  {{ .Content }}
+
+  <div class="silo-navigation">
+    <a href="/silos/">← Back to Silo List</a>
+    <a href="/">← Back to Home</a>
+  </div>
+
+</article>
+
+<style>
+.silo-navigation {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.silo-navigation a {
+  text-decoration: none;
+  color: #3366cc;
+}
+.silo-navigation a:hover {
+  text-decoration: underline;
+}
+</style>
+
+{{ end }}

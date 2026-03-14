@@ -1,0 +1,47 @@
+{{ $page := .Page }}
+{{ $dir := .Get "dir" }}
+
+<div class="pswp-gallery gallery" id="gallery-{{ $page.File.BaseFileName }}">
+  {{ range (readDir (printf "content/%s/%s" $page.File.Dir $dir)) }}
+    {{ if not .IsDir }}
+      {{ $full := printf "%s/%s/%s" $page.RelPermalink $dir .Name }}
+      <a href="{{ $full }}"
+         data-pswp-width="1600"
+         data-pswp-height="1067">
+        <img src="{{ $full }}" loading="lazy">
+      </a>
+    {{ end }}
+  {{ end }}
+</div>
+
+<!-- PhotoSwipe CSS -->
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+
+<!-- PhotoSwipe JS -->
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+  import PhotoSwipe from 'https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-{{ $page.File.BaseFileName }}',
+    children: 'a',
+    pswpModule: PhotoSwipe
+  });
+
+  lightbox.init();
+</script>
+
+<style>
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+</style>
+
+
