@@ -1,8 +1,4 @@
-\---
-
-title: "Silo List"
-
-\---
-
-
+---
+title: "Bell"
+---
 
